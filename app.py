@@ -16,6 +16,7 @@ def get_stock_data(symbol):
     url = f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&apikey={API_KEY}'
     response = requests.get(url)
     data = response.json()
+    print("Alpha Vantage API Response:", data)
 
     if 'Time Series (Daily)' in data:
         daily_data = data['Time Series (Daily)']
@@ -41,7 +42,7 @@ def stock(symbol):
 
 if __name__ == '__main__':
     # app.run(debug=True, use_reloader=False)
-    port = int(os.environ.get('PORT', 5001))  # Default to 5000 if PORT is not set
+    port = int(os.environ.get('PORT', 5005))  # Default to 5000 if PORT is not set
     app.run(debug=True, host='0.0.0.0', port=port)
 
 
